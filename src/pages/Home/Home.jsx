@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+// import { Link, useLocation } from 'react-router-dom';
 import { fetchTrending } from 'services/themoviedbApi';
+import { Title } from './Home.styled';
+import { FilmList, PageWrapper } from 'components';
 
 export default function Home() {
   const [filmList, setFilmList] = useState([]);
-  const location = useLocation();
+  // const location = useLocation();
 
   useEffect(() => {
-    // console.log('filmList.length :>> ', filmList.length);
-    // if (filmList.length > 0) return;
     async function getTrendingFilms() {
       try {
         const trendingFilms = await fetchTrending();
@@ -21,17 +21,17 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
-      <h3>Trending today</h3>
-      <ol>
+    <PageWrapper>
+      <Title>Trending today</Title>
+      <FilmList filmList={filmList} linkTo="movies/" />
+
+      {/* <div>
         {filmList.map(({ title, id }) => (
-          <li key={id}>
-            <Link to={`movies/${id}`} state={{ from: location }}>
-              {title}
-            </Link>
-          </li>
+          <Link key={id} to={`movies/${id}`} state={{ from: location }}>
+            {title}
+          </Link>
         ))}
-      </ol>
-    </main>
+      </div> */}
+    </PageWrapper>
   );
 }

@@ -2,6 +2,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
 import { fetchMovieById } from 'services/themoviedbApi';
+import { BackLink, PageWrapper } from 'components';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
@@ -25,8 +26,8 @@ export default function MovieDetails() {
     movie;
   const year = new Date(release_date).getFullYear();
   return (
-    <main>
-      <Link to={backLinkHref}>== Go back to movies</Link>
+    <PageWrapper>
+      <BackLink to={backLinkHref}>Go back</BackLink>
 
       <h3>{`${title} (${year})`} </h3>
       <img
@@ -38,7 +39,6 @@ export default function MovieDetails() {
       <p>{`${overview}`}</p>
       <h3>Genres</h3>
       {genres && <p>{genres.map(({ name }) => name).join(' ')}</p>}
-
       <h3>Additional information</h3>
       <ul>
         <li>
@@ -51,6 +51,6 @@ export default function MovieDetails() {
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
       </Suspense>
-    </main>
+    </PageWrapper>
   );
 }

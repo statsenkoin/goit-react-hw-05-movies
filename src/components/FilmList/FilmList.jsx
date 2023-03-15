@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { FilmsBox, LinkStyled } from './FilmList.styled';
 
 export function FilmList({ filmList, linkTo }) {
@@ -14,3 +15,13 @@ export function FilmList({ filmList, linkTo }) {
     </FilmsBox>
   );
 }
+
+FilmList.propTypes = {
+  filmList: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    })
+  ),
+  linkTo: PropTypes.string,
+};

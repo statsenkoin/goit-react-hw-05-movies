@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { fetchMovieByName } from 'services/themoviedbApi';
 
 export default function Movies() {
   const [filmList, setFilmList] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
-    if (filmList.length) return;
+    // if (filmList.length) return;
     async function getFilmsByName() {
       try {
         const filmsByName = await fetchMovieByName('batman');
@@ -16,13 +17,16 @@ export default function Movies() {
       }
     }
     getFilmsByName();
-  }, [filmList]);
+  }, []);
+
   return (
     <main>
       <ul>
         {filmList.map(({ title, id }) => (
           <li key={id}>
-            <Link to={`${id}`}>{title}</Link>
+            <Link to={`${id}`} state={{ from: location }}>
+              {title}
+            </Link>
           </li>
         ))}
       </ul>

@@ -8,6 +8,7 @@ export const Header = styled.header`
   z-index: 1100;
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 48px;
   padding: 12px 24px;
   color: #fff;
@@ -18,11 +19,11 @@ export const Header = styled.header`
 
 export const NavBox = styled.nav`
   display: flex;
-  gap: 10px;
+  gap: 20px;
 `;
 
 export const NavLinkStyled = styled(NavLink)`
-  padding: 5px 10px;
+  padding: 5px 20px;
   border: 1px solid #2c3b8d;
   border-radius: 5px;
   text-decoration: none;

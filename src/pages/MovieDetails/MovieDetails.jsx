@@ -2,13 +2,13 @@ import { useLocation, useParams } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
 import { fetchMovieById } from 'services/themoviedbApi';
-import { BackLink, PageWrapper } from 'components';
+import { BackLink, MovieMeta, PageWrapper } from 'components';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState({});
 
   useEffect(() => {
     async function getMovieDetails() {
@@ -22,23 +22,11 @@ export default function MovieDetails() {
     getMovieDetails();
   }, [movieId]);
 
-  const { poster_path, title, vote_average, overview, release_date, genres } =
-    movie;
-  const year = new Date(release_date).getFullYear();
   return (
     <PageWrapper>
       <BackLink to={backLinkHref}>Go back</BackLink>
+      <MovieMeta movie={movie} />
 
-      <h3>{`${title} (${year})`} </h3>
-      <img
-        src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-        alt={`${title}`}
-      />
-      <p>User Score: {`${Math.round(vote_average * 10)}`}%</p>
-      <h3>Owerview</h3>
-      <p>{`${overview}`}</p>
-      <h3>Genres</h3>
-      {genres && <p>{genres.map(({ name }) => name).join(' ')}</p>}
       <h3>Additional information</h3>
       <ul>
         <li>

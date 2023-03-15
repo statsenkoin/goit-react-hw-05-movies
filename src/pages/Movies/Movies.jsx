@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+// import { Link, useLocation } from 'react-router-dom';
 import { fetchMovieByName } from 'services/themoviedbApi';
+import { PageWrapper, FilmList } from 'components';
 
 export default function Movies() {
   const [filmList, setFilmList] = useState([]);
-  const location = useLocation();
+  // const location = useLocation();
 
   useEffect(() => {
     // if (filmList.length) return;
@@ -20,17 +21,17 @@ export default function Movies() {
   }, []);
 
   return (
-    <main>
-      <ul>
+    <PageWrapper>
+      <FilmList filmList={filmList} linkTo="" />
+
+      {/* <div>
         {filmList.map(({ title, id }) => (
-          <li key={id}>
-            <Link to={`${id}`} state={{ from: location }}>
-              {title}
-            </Link>
-          </li>
+          <Link key={id} to={`${id}`} state={{ from: location }}>
+            {title}
+          </Link>
         ))}
-      </ul>
-    </main>
+      </div> */}
+    </PageWrapper>
   );
 
   // const trendingFilms = await fetchMovie('avatar');

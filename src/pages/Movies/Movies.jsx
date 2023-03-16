@@ -22,7 +22,7 @@ export default function Movies() {
 
   return (
     <PageWrapper>
-      <FilmList filmList={filmList} linkTo="" />
+      <FilmList filmList={filmList} />
 
       {/* <div>
         {filmList.map(({ title, id }) => (

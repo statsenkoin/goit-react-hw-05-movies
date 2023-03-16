@@ -1,13 +1,13 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchMovieById } from 'services/themoviedbApi';
 import { BackLink, MovieMeta, PageWrapper } from 'components';
 
 export default function MovieDetails() {
+  const [movie, setMovie] = useState({});
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
-  const [movie, setMovie] = useState({});
+  const backLinkHref = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     async function getMovieDetails() {
@@ -23,7 +23,7 @@ export default function MovieDetails() {
 
   return (
     <PageWrapper>
-      <BackLink to={backLinkHref}>Go back</BackLink>
+      <BackLink to={backLinkHref.current}>Go back</BackLink>
       <MovieMeta movie={movie} />
     </PageWrapper>
   );

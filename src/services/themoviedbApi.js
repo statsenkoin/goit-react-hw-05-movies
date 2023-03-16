@@ -10,7 +10,7 @@ export async function fetchTrending() {
   return response.data.results;
 }
 
-export async function fetchMovieByName(query = 'avatar') {
+export async function fetchMovieByName(query) {
   const response = await axios.get(`/search/movie?query=${query}`);
   return response.data.results;
 }

@@ -1,6 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { Link, Outlet } from 'react-router-dom';
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchMovieById } from 'services/themoviedbApi';
 import { BackLink, MovieMeta, PageWrapper } from 'components';
 
@@ -26,19 +25,6 @@ export default function MovieDetails() {
     <PageWrapper>
       <BackLink to={backLinkHref}>Go back</BackLink>
       <MovieMeta movie={movie} />
-
-      <h3>Additional information</h3>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
-      <Suspense fallback={<div>Loading subpage...</div>}>
-        <Outlet />
-      </Suspense>
     </PageWrapper>
   );
 }

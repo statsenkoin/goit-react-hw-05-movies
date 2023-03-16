@@ -24,14 +24,6 @@ export default function Home() {
     <PageWrapper>
       <Title>Trending today</Title>
       <FilmList filmList={filmList} linkTo="movies/" />
-
-      {/* <div>
-        {filmList.map(({ title, id }) => (
-          <Link key={id} to={`movies/${id}`} state={{ from: location }}>
-            {title}
-          </Link>
-        ))}
-      </div> */}
     </PageWrapper>
   );
 }

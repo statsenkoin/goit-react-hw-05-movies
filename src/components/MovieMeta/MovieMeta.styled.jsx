@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  display: flex;
+export const Section = styled.div`
   padding: 10px 0;
   border-bottom: 2px solid #888;
 `;
 
+export const MovieCard = styled.div`
+  display: flex;
+`;
+
 export const Image = styled.img`
   width: 250px;
+  height: fit-content;
+
+  @media (max-width: 768px) {
+    width: 150px;
+  }
 `;
 
 export const Meta = styled.div`

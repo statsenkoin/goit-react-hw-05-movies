@@ -8,7 +8,11 @@ export function FilmList({ filmList, linkTo }) {
   return (
     <FilmsBox>
       {filmList.map(({ title, id }) => (
-        <LinkStyled key={id} to={`${linkTo}${id}`} state={{ from: location }}>
+        <LinkStyled
+          key={id}
+          to={`${linkTo ?? ''}${id}`}
+          state={{ from: location }}
+        >
           {title}
         </LinkStyled>
       ))}

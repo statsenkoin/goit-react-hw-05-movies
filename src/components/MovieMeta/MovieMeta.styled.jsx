@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Section = styled.div`
-  padding: 10px 0;
-  border-bottom: 2px solid #888;
+  padding: 20px 0;
+  border-top: 2px solid #888;
 `;
 
 export const MovieCard = styled.div`

@@ -39,7 +39,9 @@ export function MovieMeta({ movie }) {
       </Section>
 
       <Suspense fallback={<div>Loading subpage...</div>}>
-        <Outlet />
+        <Section>
+          <Outlet />
+        </Section>
       </Suspense>
     </>
   );

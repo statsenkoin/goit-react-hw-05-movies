@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const FilmsBox = styled.div`
+export const FilmsList = styled.ul`
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 20px;
   display: flex;
   flex-direction: column;

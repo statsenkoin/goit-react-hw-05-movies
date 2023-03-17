@@ -1,6 +1,8 @@
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { fetchMovieReviews } from 'services/themoviedbApi';
+import { ReviewList } from './Reviews.styled';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -23,15 +25,19 @@ export default function Reviews() {
       {!reviews.length ? (
         <p>We don`t have any reviews for this movie</p>
       ) : (
-        <ul>
+        <ReviewList>
           {reviews.map(({ id, author, content }) => (
             <li key={id}>
               <h3>Author: {author}</h3>
               <p>{content}</p>
             </li>
           ))}
-        </ul>
+        </ReviewList>
       )}
     </div>
   );
 }
+
+Reviews.propTypes = {
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+};

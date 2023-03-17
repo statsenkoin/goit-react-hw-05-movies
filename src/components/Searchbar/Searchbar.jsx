@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
-import { SearchForm, SearchButton, SearchInput } from './Searchbar.styled';
 import { BiSearchAlt } from 'react-icons/bi';
+import { SearchForm, SearchButton, SearchInput } from './Searchbar.styled';
 
 export function Searchbar({ handleSearchInput }) {
   return (

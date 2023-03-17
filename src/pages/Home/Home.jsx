@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
-// import { Link, useLocation } from 'react-router-dom';
 import { fetchTrending } from 'services/themoviedbApi';
-import { Title } from './Home.styled';
 import { FilmList, PageWrapper } from 'components';
+import { Title } from './Home.styled';
 
 export default function Home() {
   const [filmList, setFilmList] = useState([]);
-  // const location = useLocation();
 
   useEffect(() => {
     async function getTrendingFilms() {

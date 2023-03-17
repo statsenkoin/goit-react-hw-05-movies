@@ -5,6 +5,7 @@ import { FilmsList, LinkStyled } from './FilmList.styled';
 
 export function FilmList({ filmList, linkTo }) {
   const location = useLocation();
+
   return (
     <FilmsList>
       {filmList.map(({ title, id }) => (

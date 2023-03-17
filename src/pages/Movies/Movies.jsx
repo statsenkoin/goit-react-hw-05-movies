@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-// import { Link, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { fetchMovieByName } from 'services/themoviedbApi';
 import { PageWrapper, FilmList, Searchbar } from 'components';
-import { useSearchParams } from 'react-router-dom';
 
 export default function Movies() {
   const [filmList, setFilmList] = useState([]);
   const [searchQuery, setSearchQuery] = useSearchParams();
-  // const location = useLocation();
 
   useEffect(() => {
     const query = searchQuery.get('query') ?? '';

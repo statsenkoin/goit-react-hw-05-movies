@@ -29,14 +29,12 @@ export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
   font-size: 18px;
   color: #d1d1d1;
-  transition: 300ms;
+  transition: box-shadow 250ms linear, transform 250ms linear;
   &.active {
     color: yellow;
   }
-  &:hover,
-  &:focus {
-    transition: 300ms;
-    scale: 1.1;
+  &:hover {
+    transform: scale(1.1);
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
       0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   }

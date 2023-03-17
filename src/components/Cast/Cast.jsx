@@ -32,7 +32,11 @@ export default function Cast() {
       {cast.map(({ id, profile_path, name, character }) => (
         <Actor key={id}>
           <ActorPhoto
-            src={`https://image.tmdb.org/t/p/w300${profile_path}`}
+            src={
+              profile_path
+                ? `https://image.tmdb.org/t/p/w300${profile_path}`
+                : `https://via.placeholder.com/160x240`
+            }
             alt={name}
           />
           <ActorName>{name}</ActorName>
